@@ -43,18 +43,45 @@
 </head>
 
 <body>
-    <div class="app">
-        <h1>PhoneGap</h1>
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
-        </div>
-    </div>
+<div class="menuBar">Adam was Here</div>
+<div id="drawing" class="draw">
+Canvas
+</div>
+
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/svg.js"></script>
+	<script type="text/javascript" src="svg.draw.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>
+	<script>
+var draw = SVG('drawing').size('1000', '1000');
+
+
+var flag = 0;
+var element = draw;
+element.on("mousedown", function(){
+	var rect = draw.rect(20, 20).fill('#f06').attr({
+   	 x: event.pageX,
+    	y: event.pageY
+  });
+   element.on("mousemove", function(){
+		rect.size(2+event.pageX, 2+event.pageY)
+		console.log(flag++);
+
+	}, false);
+
+}, false);
+
+element.on("mouseup", function(){
+    element.off("mousemove");
+        //alert("click");
+}, false);
+
+
+</script>
 </body>
 
 </html>

@@ -43,7 +43,11 @@
 </head>
 
 <body>
-<div class="menuBar">Adam was Here</div>
+<div class="menuBar">
+	<button>
+	Adam was Here
+	</button>
+</div>
 <div id="drawing" class="draw">
 Canvas
 </div>
@@ -58,17 +62,21 @@ Canvas
     </script>
 	<script>
 var draw = SVG('drawing').size('1000', '1000');
-
+var currFill = 'blue'
 
 var flag = 0;
+var xinitial = 0;
+var yinitial = 0;
 var element = draw;
 element.on("mousedown", function(){
-	var rect = draw.rect(20, 20).fill('#f06').attr({
+	xinitial = event.pageX;
+	yinitial = event.pageY;
+	var rect = draw.rect(10, 10).fill(currFill).attr({
    	 x: event.pageX,
     	y: event.pageY
   });
    element.on("mousemove", function(){
-		rect.size(2+event.pageX, 2+event.pageY)
+		rect.size(10+event.pageX-xinitial, 10+event.pageY-yinitial)
 		console.log(flag++);
 
 	}, false);
