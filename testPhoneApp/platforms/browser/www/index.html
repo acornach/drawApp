@@ -44,9 +44,32 @@
 
 <body>
 <div class="menuBar">
-	<button>
-	Adam was Here
+	<button onclick="changeColor(1)">
+		BLUE
 	</button>
+	<button onclick="changeColor(2)">
+		YELLOW
+	</button>
+	<button onclick="changeColor(3)">
+		GREEN
+	</button>
+	<button onclick="changeColor(4)">
+		RED
+	</button>
+	<button onclick="changeColor(5)">
+		PURPLE
+	</button>
+
+	<button onclick="changeShape(1)">
+		SQUARE
+	</button>
+	<button onclick="changeShape(2)">
+		STAR
+	</button>
+	<button onclick="changeShape(3)">
+		CIRCLE
+	</button>
+
 </div>
 <div id="drawing" class="draw">
 Canvas
@@ -61,24 +84,47 @@ Canvas
         app.initialize();
     </script>
 	<script>
-var draw = SVG('drawing').size('1000', '1000');
-var currFill = 'blue'
 
+var draw = SVG('drawing').size('1000', '1000');
+var currFill = 'blue';
+var currObject = 'square';
 var flag = 0;
 var xinitial = 0;
 var yinitial = 0;
 var element = draw;
+
+//Touch screen functions
 element.on("mousedown", function(){
 	xinitial = event.pageX;
 	yinitial = event.pageY;
-	var rect = draw.rect(10, 10).fill(currFill).attr({
-   	 x: event.pageX,
-    	y: event.pageY
-  });
+	
+	if(currObject=='square'){
+		var rect = draw.rect(10, 10).fill(currFill).attr({
+			x: event.pageX,
+			y: event.pageY
+		});
+	}
+	if(currObject=='star'){
+	
+	}
+	if(currObject=='circle'){
+		var ellipse = draw.ellipse(15, 10).fill(currFill).move(xinitial,yinitial);
+		console.log('ellipse');
+	}
+	
    element.on("mousemove", function(){
+	if(currObject=='square'){
 		rect.size(10+event.pageX-xinitial, 10+event.pageY-yinitial)
 		console.log(flag++);
-
+	}
+	if(currObject=='star'){
+	
+	}
+	if(currObject=='circle'){
+		ellipse.radius(15+(event.pageX-xinitial)/2, 10+(event.pageY-yinitial)/2)
+		console.log(flag++);
+	}
+	
 	}, false);
 
 }, false);
@@ -88,7 +134,21 @@ element.on("mouseup", function(){
         //alert("click");
 }, false);
 
-
+//Button Funtions
+	function changeColor(c){
+		if(c==1){ currFill = 'blue';}
+		if(c==2){ currFill = 'yellow';}
+		if(c==3){ currFill = 'green';}
+		if(c==4){ currFill = 'red';}
+		if(c==5){ currFill = 'purple';}
+	}
+	
+	function changeShape(c){
+		if(c==1){ currObject = 'square';}
+		if(c==2){ currObject = 'star';}
+		if(c==3){ currObject = 'circle';}
+	}
+	
 </script>
 </body>
 
