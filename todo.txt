@@ -1,6 +1,3 @@
-Make shapes translucent with thick borders if possible, at least do translucent
 Make another polygon option, try for star, but triangle if at all possible
-Have a free-draw pen option, probably not translucent, but thick widtch
-
 
 Format the page nicely, check for bugs and roll out as version 1.0!
