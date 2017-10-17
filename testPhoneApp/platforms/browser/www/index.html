@@ -115,7 +115,23 @@ element.on("mousedown", function(){
 		});
 	}
 	if(currObject=='star'){
-	
+		//Points start at top, move clockwise, p1 and p11 should always be the same
+		var p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11;
+		p1= [50+xinitial,0+yinitial];
+		p2= [60+xinitial,30+yinitial];
+		p3= [100+xinitial,30+yinitial];
+		p4= [65+xinitial,55+yinitial];
+		p5=	[75+xinitial,85+yinitial];
+		p6= [50+xinitial,63+yinitial];
+		p7= [25+xinitial,85+yinitial];
+		p8= [35+xinitial,55+yinitial];
+		p9= [0+xinitial,30+yinitial];
+		p10= [40+xinitial,30+yinitial];
+		p11= [50+xinitial,0+yinitial];
+		console.log(p11);
+		var polyline = draw.polyline([p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11])// 60,60 50,100 40,60 0,50 40,40')
+		polyline.fill({color: currFill, opacity: .6})
+		polyline.stroke({ color: currFill, opacity: 1, width: 5, linecap: 'round', linejoin: 'round' })
 	}
 	if(currObject=='circle'){
 		var ellipse = draw.ellipse(15, 10).fill({color: currFill, opacity: .6}).stroke({color: currFill, width: 5, opacity: 1 }).move(xinitial,yinitial);
@@ -135,7 +151,32 @@ element.on("mousedown", function(){
 		console.log(flag++);
 	}
 	if(currObject=='star'){
+		var p1new,p2new,p3new,p4new,p5new,p6new,p7new,p8new,p9new,p10new,p11new;
+
+		
+		
+		
+		//Move Outer Points relative to mouse
+		//p1new=[p1[0]+event.pageX-xinitial,p1[1]+event.pageY-yinitial]
+		p3new=[p3[0]+event.pageX-xinitial,p3[1]+event.pageY-yinitial]
+		p5new=[p5[0]+event.pageX-xinitial,p5[1]+event.pageY-yinitial]
+		p7new=[p7[0]-event.pageX+xinitial,p7[1]+event.pageY-yinitial]
+		p9new=[p9[0]-event.pageX+xinitial,p9[1]+event.pageY-yinitial]
+		//p11new=[p11[0]+event.pageX-xinitial,p11[1]+event.pageY-yinitial]		
+		
+		
+		//INNEr points relative to new adjacent outer
+		var width = p3new[0]-p9new[0];
+		var height = p5new[1]-p1[1];
+		p2new=[p3new[0]- width/3,p1[1]+height/3]//p2[0]+event.pageX-xinitial,p2[1]+event.pageY-yinitial]
+		p4new=[p3new[0]-width/4,p3new[1]+height/7]
+		p6new=[p6[0],p5[1]-height/3]
+		p8new=[p9new[0]+width/4,p9new[1]+height/7]
+		p10new=[p9new[0] +width/3,p11[1]+height/3]
+
 	
+		polyline.plot([p1,p2new,p3new,p4new,p5new,p6new,p7new,p8new,p9new,p10new,p11])
+		
 	}
 	if(currObject=='circle'){
 		ellipse.radius(15+(event.pageX-xinitial)/2, 10+(event.pageY-yinitial)/2)
