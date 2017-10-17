@@ -92,7 +92,6 @@ h1 {
 }
 
 
-
 .menuBar{
     overflow: hidden;
     background-color: #333;
@@ -100,4 +99,9 @@ h1 {
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
     height: 30px;
+}
+
+SVG{
+	margin: 10px;
+
 }
