@@ -1,4 +1,11 @@
-Make another polygon option, try for star, but triangle if at all possible
-Make Initial shapes bigger.
-
+Add Close Button
 Format the page nicely, check for bugs and roll out as version 1.0!
+Formatting:
+Menus
+Canvas
+buttons
+Initial Shape sizes
+Colors (gloss, etc.)
+
+Test on devices:
+is it fast enough, simplify images, etc...
