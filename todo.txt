@@ -1,11 +1,17 @@
 Add Close Button
 Format the page nicely, check for bugs and roll out as version 1.0!
+
 Formatting:
-Menus
-Canvas
-buttons
+Menus/Canvas
 Initial Shape sizes
-Colors (gloss, etc.)
 
 Test on devices:
 is it fast enough, simplify images, etc...
+
+
+Make Active Button with Javascript/grouping elements to highlight current shape and current fill
+Make Most recent drawing change to the fill color most recently selected
+Take away Header and Footer
+Make circles go both ways
+Figure out highlighting issue
+Button Images!!!

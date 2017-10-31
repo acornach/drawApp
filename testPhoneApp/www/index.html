@@ -45,38 +45,47 @@
 
 <body>
 <div class="menuBar">
-	<button onclick="changeColor(1)">
-		BLUE
-	</button>
-	<button onclick="changeColor(2)">
-		YELLOW
-	</button>
-	<button onclick="changeColor(3)">
-		GREEN
-	</button>
-	<button onclick="changeColor(4)">
-		RED
-	</button>
-	<button onclick="changeColor(5)">
-		PURPLE
-	</button>
+<div class="header">
+	
 
-	<button onclick="changeShape(1)">
+	<!--<button onclick="changeShape(1)">
 		SQUARE
+	</button>-->
+	<button class="star button" onclick="changeShape(2)">
+		<img class="buttonImage" src="img/star.png" ></img>
 	</button>
-	<button onclick="changeShape(2)">
-		STAR
+	<button class="circle button" onclick="changeShape(3)">
+		<img class="buttonImage" src="img/circle.png" ></img>
 	</button>
-	<button onclick="changeShape(3)">
-		CIRCLE
+	<button class="draw button" onclick="changeShape(4)">
+		<img class="buttonImage" src="img/squiggle.png" ></img>
 	</button>
-	<button onclick="changeShape(4)">
-		DRAW
+	<button class="clear button" onclick="clearReload()">
+		<img class="buttonImage" src="img/trash.jpg" ></img>
 	</button>
-	<button onclick="clearReload()">
-		CLEAR
-	</button>
+	<!--<button onclick="navigator.app.exitApp()">
+		EXIT
+	</button>-->
+</div>
+</div>
+<div class="footerWrapper">
+<div class="footer">
+	<button class="blue button" onclick="changeColor(1)">
 
+	</button>
+	<button class="yellow button" onclick="changeColor(2)">
+
+	</button>
+	<button class="green button" onclick="changeColor(3)">
+
+	</button>
+	<button class="red button" onclick="changeColor(4)">
+
+	</button>
+	<button class="purple button" onclick="changeColor(5)">
+
+	</button>
+</div>
 </div>
 <div id="drawing" class="draw">
 Canvas
@@ -91,10 +100,12 @@ Canvas
         app.initialize();
     </script>
 	<script>
+	
 
+			 
 var draw = SVG('drawing').size('1000', '1000');
 var currFill = 'blue';
-var currObject = 'square';
+var currObject = 'star';
 var flag = 0;
 var xinitial = 0;
 var yinitial = 0;
@@ -148,10 +159,10 @@ element.on("mousedown", function(){
 		console.log(p11);
 		var polyline = draw.polyline([p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11])// 60,60 50,100 40,60 0,50 40,40')
 		polyline.fill({color: currFill, opacity: .6})
-		polyline.stroke({ color: currFill, opacity: 1, width: 5, linecap: 'round', linejoin: 'round' })
+		polyline.stroke({ color: currFill, opacity: 1, width: 2, linecap: 'round', linejoin: 'round' })
 	}
 	if(currObject=='circle'){
-		var ellipse = draw.ellipse(15, 10).fill({color: currFill, opacity: .6}).stroke({color: currFill, width: 5, opacity: 1 }).move(xinitial,yinitial);
+		var ellipse = draw.ellipse(15, 10).fill({color: currFill, opacity: .6}).stroke({color: currFill, width: 2, opacity: 1 }).move(xinitial,yinitial);
 		console.log('ellipse');
 	}
 	if(currObject=='line'){
@@ -226,9 +237,9 @@ element.on("mouseup", function(){
 
 //Button Funtions
 	function changeColor(c){
-		if(c==1){ currFill = 'blue';}
-		if(c==2){ currFill = 'yellow';}
-		if(c==3){ currFill = 'green';}
+		if(c==1){ currFill = 'blue';}//var x = SVG.lastChild.fillColor(currFill);} Change fill color
+		if(c==2){ currFill = '#ffc700';}
+		if(c==3){ currFill = '#00c44b';}
 		if(c==4){ currFill = 'red';}
 		if(c==5){ currFill = 'purple';}
 	}
