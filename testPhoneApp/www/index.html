@@ -51,13 +51,13 @@
 	<!--<button onclick="changeShape(1)">
 		SQUARE
 	</button>-->
-	<button class="star button" onclick="changeShape(2)">
+	<button class="star button active" onclick="changeShape(this,2)">
 		<img class="buttonImage" src="img/star.png" ></img>
 	</button>
-	<button class="circle button" onclick="changeShape(3)">
+	<button class="circle button" onclick="changeShape(this,3)">
 		<img class="buttonImage" src="img/circle.png" ></img>
 	</button>
-	<button class="draw button" onclick="changeShape(4)">
+	<button class="draw button" onclick="changeShape(this,4)">
 		<img class="buttonImage" src="img/squiggle.png" ></img>
 	</button>
 	<button class="clear button" onclick="clearReload()">
@@ -73,16 +73,16 @@
 	<button class="blue button" onclick="changeColor(1)">
 
 	</button>
-	<button class="yellow button" onclick="changeColor(2)">
+	<button class="yellow button" onclick="changeColor(this,2)">
 
 	</button>
-	<button class="green button" onclick="changeColor(3)">
+	<button class="green button" onclick="changeColor(this,3)">
 
 	</button>
-	<button class="red button" onclick="changeColor(4)">
+	<button class="red button" onclick="changeColor(this,4)">
 
 	</button>
-	<button class="purple button" onclick="changeColor(5)">
+	<button class="purple button" onclick="changeColor(this,5)">
 
 	</button>
 </div>
@@ -236,19 +236,180 @@ element.on("mouseup", function(){
 }, false);
 
 //Button Funtions
-	function changeColor(c){
-		if(c==1){ currFill = 'blue';}//var x = SVG.lastChild.fillColor(currFill);} Change fill color
-		if(c==2){ currFill = '#ffc700';}
-		if(c==3){ currFill = '#00c44b';}
-		if(c==4){ currFill = 'red';}
-		if(c==5){ currFill = 'purple';}
+	function changeColor(element,c){
+		if(c==1){ 
+			currFill = 'blue';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+			
+			var list = document.getElementsByTagName("SVG")[0];
+			console.log(list);
+			var lastChild = list.lastChild;
+			console.log(lastChild);
+			}//var x = SVG.lastChild.fillColor(currFill);} Change fill color
+		if(c==2){ 
+			currFill = '#ffc700';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+			}
+		if(c==3){ 
+			currFill = '#00c44b';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+			}
+		if(c==4){ 
+			currFill = 'red';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+			}
+		if(c==5){ 
+			currFill = 'purple';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+			}
 	}
 	
-	function changeShape(c){
-		if(c==1){ currObject = 'square';}
-		if(c==2){ currObject = 'star';}
-		if(c==3){ currObject = 'circle';}
-		if(c==4){ currObject = 'line';}
+	function changeShape(element,c){
+		if(c==1){ 
+			currObject = 'square';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+		}
+		if(c==2){ 
+			currObject = 'star';
+			
+			//var result = [],
+			node = element;//.parentNode.firstChild;
+			
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+		}
+		if(c==3){ 
+			currObject = 'circle';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+		}
+		if(c==4){ 
+			currObject = 'line';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+		}
 	}
 	
 	//Button CLEAR

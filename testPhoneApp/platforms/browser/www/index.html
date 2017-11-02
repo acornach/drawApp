@@ -51,13 +51,13 @@
 	<!--<button onclick="changeShape(1)">
 		SQUARE
 	</button>-->
-	<button class="star button" onclick="changeShape(2)">
+	<button class="star button active" onclick="changeShape(this,2)">
 		<img class="buttonImage" src="img/star.png" ></img>
 	</button>
-	<button class="circle button" onclick="changeShape(3)">
+	<button class="circle button" onclick="changeShape(this,3)">
 		<img class="buttonImage" src="img/circle.png" ></img>
 	</button>
-	<button class="draw button" onclick="changeShape(4)">
+	<button class="draw button" onclick="changeShape(this,4)">
 		<img class="buttonImage" src="img/squiggle.png" ></img>
 	</button>
 	<button class="clear button" onclick="clearReload()">
@@ -244,11 +244,82 @@ element.on("mouseup", function(){
 		if(c==5){ currFill = 'purple';}
 	}
 	
-	function changeShape(c){
-		if(c==1){ currObject = 'square';}
-		if(c==2){ currObject = 'star';}
-		if(c==3){ currObject = 'circle';}
-		if(c==4){ currObject = 'line';}
+	function changeShape(element,c){
+		if(c==1){ 
+			currObject = 'square';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+		}
+		if(c==2){ 
+			currObject = 'star';
+			
+			//var result = [],
+			node = element;//.parentNode.firstChild;
+			
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+		}
+		if(c==3){ 
+			currObject = 'circle';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+		}
+		if(c==4){ 
+			currObject = 'line';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+		}
 	}
 	
 	//Button CLEAR

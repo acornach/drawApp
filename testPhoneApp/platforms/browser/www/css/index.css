@@ -204,3 +204,7 @@ background-image: radial-gradient(at 30% 30%,#ca6eba,purple);
 .buttonImage{
   width: 100%;
 }
+
+.active{
+	background-color: gray;
+}
