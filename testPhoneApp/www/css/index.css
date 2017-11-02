@@ -94,12 +94,14 @@ h1 {
 
 
 
-SVG{
+svg{
+  position: relative;
     margin: 0;
     padding: 0;
 	height: 100%;
 	width: 100%;
   background-color: #efefef;
+  z-index: 10;
 }
 
 
@@ -150,7 +152,7 @@ SVG{
 }
 
 .button {
-
+position: relative;
     width: 6em;
   height: 6em;
   margin-left: 3%;
@@ -164,13 +166,16 @@ SVG{
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
+  z-index: 11;
 }
 
-.button:hover {background-color: #3e8e41}
+.button:hover {
+  //background-color: #3e8e41
+  }
 
 .button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
+  //background-color: #3e8e41;
+  //box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 
@@ -180,6 +185,8 @@ SVG{
   border-radius: 50%;
 
 }
+
+
 
 .blue{
   background-image: radial-gradient(at 30% 30%,#6eb3ca,blue);
@@ -205,6 +212,11 @@ background-image: radial-gradient(at 30% 30%,#ca6eba,purple);
   width: 100%;
 }
 
-.active{
+.header .active{
 	background-color: gray;
+}
+
+.footer .active{
+  transform: translateY(8px);
+ box-shadow: 0 9px rgba(239, 239, 239, 0);
 }
