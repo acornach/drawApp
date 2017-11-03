@@ -4,7 +4,8 @@
     "displayName": "helloworld",
     "cordova": {
         "platforms": [
-            "android"
+            "android",
+            "windows"
         ],
         "plugins": {
             "cordova-plugin-battery-status": {},
@@ -50,6 +51,7 @@
         "cordova-plugin-splashscreen": "~3.2.1",
         "cordova-plugin-statusbar": "~2.1.2",
         "cordova-plugin-vibration": "~2.1.0",
-        "cordova-plugin-whitelist": "~1.2.1"
+        "cordova-plugin-whitelist": "~1.2.1",
+        "cordova-windows": "^5.0.0"
     }
 }

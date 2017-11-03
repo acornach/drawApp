@@ -93,11 +93,130 @@ h1 {
 
 
 
+
+svg{
+  position: relative;
+    margin: 0;
+    padding: 0;
+	height: 100%;
+	width: 100%;
+  background-color: #efefef;
+  z-index: 10;
+}
+
+
 .menuBar{
-    overflow: hidden;
-    background-color: #333;
-    position: fixed; /* Set the navbar to fixed position */
-    top: 0; /* Position the navbar at the top of the page */
-    width: 100%; /* Full width */
-    height: 30px;
+    position: absolute;
+  right: 0;
+  top: 0;
+  height: 6em;
+  left: 0;
+  background-color: #efefef;
+  text-align: center;
+  opacity: 1.0;
+}
+
+.header{
+   position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  margin-top: 2em;
+  left: 0;
+  background-color: #efefef;
+  opacity: 1.0;
+  text-align: center;
+}
+
+.footerWrapper{
+    position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  height: 3em;
+  text-align: center;
+  opacity: 1.0;
+}
+
+.footer{
+     position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+  opacity: 1.0;
+}
+
+.button {
+position: relative;
+    width: 6em;
+  height: 6em;
+  margin-left: 3%;
+  margin-right: 3%;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: white;
+  background-image: URL("../img/squiggle-plain.png");
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  z-index: 11;
+}
+
+.button:hover {
+  //background-color: #3e8e41
+  }
+
+.button:active {
+  //background-color: #3e8e41;
+  //box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.footer .button{
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+
+}
+
+
+
+.blue{
+  background-image: radial-gradient(at 30% 30%,#6eb3ca,blue);
+}
+
+.yellow{
+background-image: radial-gradient(at 30% 30%,rgba(253, 253, 1, 0.88),#d87800);
+}
+
+.green{
+background-image: radial-gradient(at 30% 30%,#4ef355,rgb(2, 140, 55));
+}
+
+.red{
+background-image: radial-gradient(at 30% 30%,#ca7b6e,red);
+}
+
+.purple {
+background-image: radial-gradient(at 30% 30%,#ca6eba,purple);
+}
+
+.buttonImage{
+  width: 100%;
+}
+
+.header .active{
+	background-color: gray;
+}
+
+.footer .active{
+  transform: translateY(8px);
+ box-shadow: 0 9px rgba(239, 239, 239, 0);
 }

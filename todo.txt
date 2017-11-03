@@ -1,10 +1,10 @@
-Make Active Button with Javascript/grouping elements to highlight current shape and current fill
-Make Most recent drawing change to the fill color most recently selected
-Take away Header and Footer
-Make circles go both ways
-Figure out highlighting issue
+
 Format the page nicely, check for bugs and roll out as version 1.0!
 
 Test on devices:
 is it fast enough, simplify images, etc...
-Add Close Button
+
+
+Format for devices:
+-button size and layout
+-On touch commands instead of on-click
