@@ -88,7 +88,7 @@
 </div>
 </div>
 <div id="drawing" class="draw">
-Canvas
+
 </div>
 
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
@@ -112,17 +112,20 @@ var yinitial = 0;
 var element = draw;
 
 //Touch screen functions
-element.on("mousedown", function(){
-	xinitial = event.pageX;
-	yinitial = event.pageY;
+element.on("touchstart", function(){
+xinitial = event.touches[0].clientX;
+yinitial = event.touches[0].clientY;
+
+//	xinitial = event.touches[0].clientX;;
+//	yinitial = event.touches[0].clientY;;
 	
 	var lastPointX=0;
 	var lastPointY=0;
 	
 	if(currObject=='square'){
 		var rect = draw.rect(50, 50).fill({color: currFill, opacity: .6}).stroke({color: currFill, width: 5, opacity: 1 }).attr({
-			x: event.pageX,
-			y: event.pageY
+			x: xinitial,//event.touches[0].clientX;,
+			y: yinitial//event.touches[0].clientY;
 		});
 	}
 	if(currObject=='star'){
@@ -173,15 +176,15 @@ element.on("mousedown", function(){
 		line.stroke({ color: currFill, width: 7, linecap: 'round', linejoin: 'round' })
 	}
 	
-   element.on("mousemove", function(){
+   element.on("touchmove", function(){
 	if(currObject=='square'){
-		rect.size(10+event.pageX-xinitial, 10+event.pageY-yinitial)
+		rect.size(10+event.touches[0].clientX;-xinitial, 10+event.touches[0].clientY;-yinitial)
 		console.log(flag++);
 	}
 	if(currObject=='star'){
 		var originNew,p1new,p2new,p3new,p4new,p5new,p6new,p7new,p8new,p9new,p10new,p11new;
 
-		originNew = [event.pageX,event.pageY];
+		originNew = [event.touches[0].clientX;,event.touches[0].clientY;];
 		xinitialNew = originNew[0];
 		yinitialNew = originNew[1];
 		var xOffset = xinitialNew-xinitial;
@@ -214,24 +217,24 @@ element.on("mousedown", function(){
 		
 	}
 	if(currObject=='circle'){
-		ellipse.radius(30+Math.abs((event.pageX-xinitial)/2), 30+Math.abs((event.pageY-yinitial)/2))
+		ellipse.radius(30+Math.abs((event.touches[0].clientX;-xinitial)/2), 30+Math.abs((event.touches[0].clientY;-yinitial)/2))
 		console.log(flag++);
 	}
 	
 	if(currObject=='line'){
-		var newLine = draw.line([[event.pageX, event.pageY], [lastPointX, lastPointY]])
+		var newLine = draw.line([[event.touches[0].clientX;, event.touches[0].clientY;], [lastPointX, lastPointY]])
 		newLine.stroke({ color: currFill, width: 17, linecap: 'round', linejoin: 'round' })
 		//line.plot
-		lastPointX=event.pageX;
-		lastPointY=event.pageY;
+		lastPointX=event.touches[0].clientX;;
+		lastPointY=event.touches[0].clientY;;
 	}
 	
 	}, false);
 
 }, false);
 
-element.on("mouseup", function(){
-    element.off("mousemove");
+element.on("touchend", function(){
+    element.off("touchmove");
         //alert("click");
 }, false);
 

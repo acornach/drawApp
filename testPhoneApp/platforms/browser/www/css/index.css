@@ -91,8 +91,16 @@ h1 {
     -webkit-animation:fade 3000ms infinite;
 }
 
+body{
+  padding: 0;
+  margin: 0;
+}
 
+#drawing{
+  height: 100vh;
+  width: 100vw;
 
+}
 
 svg{
   position: relative;
@@ -100,7 +108,7 @@ svg{
     padding: 0;
 	height: 100%;
 	width: 100%;
-  background-color: #efefef;
+  background-color: yellow;//#efefef;
   z-index: 10;
 }
 
@@ -109,23 +117,23 @@ svg{
     position: absolute;
   right: 0;
   top: 0;
-  height: 6em;
   left: 0;
   background-color: #efefef;
   text-align: center;
   opacity: 1.0;
+    background-color: purple;
 }
 
 .header{
    position: absolute;
   right: 0;
   top: 0;
-  height: 100%;
-  margin-top: 2em;
+  margin-top: .5%;
   left: 0;
   background-color: #efefef;
   opacity: 1.0;
   text-align: center;
+    background-color: red;
 }
 
 .footerWrapper{
@@ -133,10 +141,11 @@ svg{
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 1rem;
-  height: 3em;
+  padding: 1em;
+  height: 5%;
   text-align: center;
   opacity: 1.0;
+  background-color: purple;
 }
 
 .footer{
@@ -145,16 +154,16 @@ svg{
   bottom: 0;
   left: 0;
   height: 100%;
-  padding: 1rem;
+  padding: 1em;
   background-color: #efefef;
   text-align: center;
   opacity: 1.0;
+    background-color: red;
 }
 
 .button {
 position: relative;
-    width: 6em;
-  height: 6em;
+    width: 10%;
   margin-left: 3%;
   margin-right: 3%;
   text-align: center;
@@ -164,7 +173,7 @@ position: relative;
   background-color: white;
   background-image: URL("../img/squiggle-plain.png");
   border: none;
-  border-radius: 15px;
+  border-radius: 10%;
   box-shadow: 0 9px #999;
   z-index: 11;
 }
@@ -176,12 +185,13 @@ position: relative;
 .button:active {
   //background-color: #3e8e41;
   //box-shadow: 0 5px #666;
-  transform: translateY(4px);
+  transform: translateY(8%);
 }
 
 .footer .button{
-  width: 5em;
-  height: 5em;
+  position: relative;
+  padding-top: 8%;
+  width: 8%;
   border-radius: 50%;
 
 }
@@ -217,6 +227,6 @@ background-image: radial-gradient(at 30% 30%,#ca6eba,purple);
 }
 
 .footer .active{
-  transform: translateY(8px);
- box-shadow: 0 9px rgba(239, 239, 239, 0);
+  transform: translateY(10%);
+ box-shadow: 0 11% rgba(239, 239, 239, 0);
 }
