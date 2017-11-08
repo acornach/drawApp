@@ -163,7 +163,7 @@ svg{
 
 .button {
 position: relative;
-    width: 10%;
+    width: 12%;
   margin-left: 3%;
   margin-right: 3%;
   text-align: center;
@@ -184,14 +184,14 @@ position: relative;
 
 .button:active {
   //background-color: #3e8e41;
-  //box-shadow: 0 5px #666;
+  box-shadow: 0 4px; #666;
   transform: translateY(8%);
 }
 
 .footer .button{
   position: relative;
-  padding-top: 8%;
-  width: 8%;
+  padding-top: 10%;
+  width: 10%;
   border-radius: 50%;
 
 }
@@ -228,5 +228,5 @@ background-image: radial-gradient(at 30% 30%,#ca6eba,purple);
 
 .footer .active{
   transform: translateY(10%);
- box-shadow: 0 11% rgba(239, 239, 239, 0);
+   box-shadow: 0 4px; #666;
 }

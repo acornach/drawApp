@@ -116,16 +116,16 @@ element.on("touchstart", function(){
 xinitial = event.touches[0].clientX;
 yinitial = event.touches[0].clientY;
 
-//	xinitial = event.touches[0].clientX;;
-//	yinitial = event.touches[0].clientY;;
+//	xinitial = event.pageX;
+//	yinitial = event.touches[0].clientY;
 	
 	var lastPointX=0;
 	var lastPointY=0;
 	
 	if(currObject=='square'){
 		var rect = draw.rect(50, 50).fill({color: currFill, opacity: .6}).stroke({color: currFill, width: 5, opacity: 1 }).attr({
-			x: xinitial,//event.touches[0].clientX;,
-			y: yinitial//event.touches[0].clientY;
+			x: xinitial,//event.pageX,
+			y: yinitial//event.touches[0].clientY
 		});
 	}
 	if(currObject=='star'){
@@ -178,13 +178,13 @@ yinitial = event.touches[0].clientY;
 	
    element.on("touchmove", function(){
 	if(currObject=='square'){
-		rect.size(10+event.touches[0].clientX;-xinitial, 10+event.touches[0].clientY;-yinitial)
+		rect.size(10+event.pageX-xinitial, 10+event.touches[0].clientY-yinitial)
 		console.log(flag++);
 	}
 	if(currObject=='star'){
 		var originNew,p1new,p2new,p3new,p4new,p5new,p6new,p7new,p8new,p9new,p10new,p11new;
 
-		originNew = [event.touches[0].clientX;,event.touches[0].clientY;];
+		originNew = [event.touches[0].clientX,event.touches[0].clientY];
 		xinitialNew = originNew[0];
 		yinitialNew = originNew[1];
 		var xOffset = xinitialNew-xinitial;
@@ -217,16 +217,16 @@ yinitial = event.touches[0].clientY;
 		
 	}
 	if(currObject=='circle'){
-		ellipse.radius(30+Math.abs((event.touches[0].clientX;-xinitial)/2), 30+Math.abs((event.touches[0].clientY;-yinitial)/2))
+		ellipse.radius(30+Math.abs((event.touches[0].clientX-xinitial)/2), 30+Math.abs((event.touches[0].clientY-yinitial)/2))
 		console.log(flag++);
 	}
 	
 	if(currObject=='line'){
-		var newLine = draw.line([[event.touches[0].clientX;, event.touches[0].clientY;], [lastPointX, lastPointY]])
+		var newLine = draw.line([[event.touches[0].clientX, event.touches[0].clientY], [lastPointX, lastPointY]])
 		newLine.stroke({ color: currFill, width: 17, linecap: 'round', linejoin: 'round' })
 		//line.plot
-		lastPointX=event.touches[0].clientX;;
-		lastPointY=event.touches[0].clientY;;
+		lastPointX=event.touches[0].clientX;
+		lastPointY=event.touches[0].clientY;
 	}
 	
 	}, false);
