@@ -1,0 +1,11 @@
+
+Format the page nicely, check for bugs and roll out as version 1.0!
+
+Test on devices:
+is it fast enough, simplify images, etc...
+
+
+Format for devices:
+-change icon and name of program for metadata, etc...
+-Make buttons do button things
+-Bigger button, just a little

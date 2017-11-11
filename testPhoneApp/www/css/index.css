@@ -20,30 +20,7 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
-body {
-    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
-    background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
-    height:100%;
-    margin:0px;
-    padding:0px;
-    text-transform:uppercase;
-    width:100%;
-}
+
 
 /* Portrait layout (default) */
 .app {
@@ -112,4 +89,144 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+body{
+  padding: 0;
+  margin: 0;
+}
+
+#drawing{
+  height: 100vh;
+  width: 100vw;
+
+}
+
+svg{
+  position: relative;
+    margin: 0;
+    padding: 0;
+	height: 100%;
+	width: 100%;
+  background-color: #efefef;
+  z-index: 10;
+}
+
+
+.menuBar{
+    position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  background-color: #efefef;
+  text-align: center;
+  opacity: 1.0;
+
+}
+
+.header{
+   position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: .5%;
+  left: 0;
+  background-color: #efefef;
+  opacity: 1.0;
+  text-align: center;
+
+}
+
+.footerWrapper{
+    position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1em;
+  height: 5%;
+  text-align: center;
+  opacity: 1.0;
+
+}
+
+.footer{
+     position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  padding: 1em;
+  background-color: #efefef;
+  text-align: center;
+  opacity: 1.0;
+   
+}
+
+.button {
+position: relative;
+    width: 12%;
+  margin-left: 3%;
+  margin-right: 3%;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: white;
+  background-image: URL("../img/squiggle-plain.png");
+  border: none;
+  border-radius: 10%;
+  box-shadow: 0 9px #999;
+  z-index: 11;
+}
+
+.button:hover {
+  //background-color: #3e8e41
+  }
+
+.button:active {
+  //background-color: #3e8e41;
+  box-shadow: 0 4px; #666;
+  transform: translateY(8%);
+}
+
+.footer .button{
+  position: relative;
+  padding-top: 10%;
+  width: 10%;
+  border-radius: 50%;
+
+}
+
+
+
+.blue{
+  background-image: radial-gradient(at 30% 30%,#6eb3ca,blue);
+}
+
+.yellow{
+background-image: radial-gradient(at 30% 30%,rgba(253, 253, 1, 0.88),#d87800);
+}
+
+.green{
+background-image: radial-gradient(at 30% 30%,#4ef355,rgb(2, 140, 55));
+}
+
+.red{
+background-image: radial-gradient(at 30% 30%,#ca7b6e,red);
+}
+
+.purple {
+background-image: radial-gradient(at 30% 30%,#ca6eba,purple);
+}
+
+.buttonImage{
+  width: 100%;
+}
+
+.header .active{
+	background-color: gray;
+}
+
+.footer .active{
+  transform: translateY(10%);
+   box-shadow: 0 4px; #666;
 }

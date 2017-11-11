@@ -19,6 +19,7 @@
     specific language governing permissions and limitations
     under the License.
 -->
+
 <html>
 
 <head>
@@ -43,18 +44,422 @@
 </head>
 
 <body>
-    <div class="app">
-        <h1>PhoneGap</h1>
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
-        </div>
-    </div>
+<div class="menuBar">
+<div class="header">
+	
+
+	<!--<button onclick="changeShape(1)">
+		SQUARE
+	</button>-->
+	<button class="star button active" onclick="changeShape(this,2)">
+		<img class="buttonImage" src="img/star.png" ></img>
+	</button>
+	<button class="circle button" onclick="changeShape(this,3)">
+		<img class="buttonImage" src="img/circle.png" ></img>
+	</button>
+	<button class="draw button" onclick="changeShape(this,4)">
+		<img class="buttonImage" src="img/squiggle.png" ></img>
+	</button>
+	<button class="clear button" onclick="clearReload()">
+		<img class="buttonImage" src="img/trash.jpg" ></img>
+	</button>
+	<!--<button onclick="navigator.app.exitApp()">
+		EXIT
+	</button>-->
+</div>
+</div>
+<div class="footerWrapper">
+<div class="footer">
+	<button class="blue button active" onclick="changeColor(this,1)">
+
+	</button>
+	<button class="yellow button" onclick="changeColor(this,2)">
+
+	</button>
+	<button class="green button" onclick="changeColor(this,3)">
+
+	</button>
+	<button class="red button" onclick="changeColor(this,4)">
+
+	</button>
+	<button class="purple button" onclick="changeColor(this,5)">
+
+	</button>
+</div>
+</div>
+<div id="drawing" class="draw">
+
+</div>
+
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/svg.js"></script>
+	<script type="text/javascript" src="svg.draw.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>
+	<script>
+	
+
+			 
+var draw = SVG('drawing').size('1000', '1000');
+var currFill = 'blue';
+var currObject = 'star';
+var flag = 0;
+var xinitial = 0;
+var yinitial = 0;
+var element = draw;
+
+//Touch screen functions
+element.on("touchstart", function(){
+xinitial = event.touches[0].clientX;
+yinitial = event.touches[0].clientY;
+
+//	xinitial = event.pageX;
+//	yinitial = event.touches[0].clientY;
+	
+	var lastPointX=0;
+	var lastPointY=0;
+	
+	if(currObject=='square'){
+		var rect = draw.rect(50, 50).fill({color: currFill, opacity: .6}).stroke({color: currFill, width: 5, opacity: 1 }).attr({
+			x: xinitial,//event.pageX,
+			y: yinitial//event.touches[0].clientY
+		});
+	}
+	if(currObject=='star'){
+		//Points start at top, move clockwise, p1 and p11 should always be the same
+		var origin,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11;
+		origin = [xinitial,yinitial];
+		var innerBase = 90*Math.cos(1.256637);
+		var innerHeight = (innerBase/2)*Math.sin(0.314159);
+		
+		var innerHypot = Math.sqrt(Math.pow(innerBase,2) + Math.pow(innerHeight,2));
+		//p1= [xinitial,yinitial-15];
+		//p2= [xinitial+innerBase/2,yinitial-15*Math.sin(0.314159)]
+		//p3= [xinitial+15*Math.cos(0.314159),yinitial-15*Math.sin(0.314159)];//Math.cos(0.6283185),Math.sin(0.6283185);
+		//p4= [xinitial+innerHypot*Math.cos(0.6283185),yinitial+innerHypot*Math.sin(0.6283185)];
+		//p5=	[xinitial+15*Math.sin(0.314159),yinitial+15*Math.cos(0.314159)];
+		//p6= [xinitial,yinitial+innerHypot];
+		//p7= [xinitial-15*Math.sin(0.314159),yinitial+15*Math.cos(0.314159)];
+		//p8= [xinitial-innerHypot*Math.cos(0.6283185),yinitial+innerHypot*Math.sin(0.6283185)];
+		//p9= [xinitial-15*Math.cos(0.314159),yinitial-15*Math.sin(0.314159)];
+		//p10= [xinitial-innerBase/2,yinitial-15*Math.sin(0.314159)]	
+		
+		p1= [xinitial,yinitial-(45)*Math.sin(1.5708)];
+		p2= [xinitial+(22.5*Math.cos(-0.942478)),yinitial+(22.5*Math.sin(-0.942478))];
+		p3= [xinitial+((45)*Math.cos(0.314159)),yinitial+((45)*Math.sin(-0.314159))];
+		p4= [xinitial+(22.5*Math.cos(0.314159)),yinitial+(22.5*Math.sin(0.314159))];
+		p5=	[xinitial+((45)*Math.cos(0.942478)),yinitial+((45)*Math.sin(0.942478))];
+		p6= [xinitial+(22.5*Math.cos(1.5708)),yinitial+(22.5*Math.sin(1.5708))];
+		p7= [xinitial+((45)*Math.cos(2.19911)),yinitial+((45)*Math.sin(2.19911))];
+		p8= [xinitial+(22.5*Math.cos(2.82743)),yinitial+(22.5*Math.sin(2.82743))];
+		p9= [xinitial+((45)*Math.cos(3.45575)),yinitial+((45)*Math.sin(3.45575))];
+		p10=[xinitial+(22.5*Math.cos(4.08407)),yinitial+(22.5*Math.sin(4.08407))];
+		
+		p11= p1;//[50+xinitial,0+yinitial];
+		console.log(p11);
+		var polyline = draw.polyline([p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11])// 60,60 50,100 40,60 0,50 40,40')
+		polyline.fill({color: currFill, opacity: .6})
+		polyline.stroke({ color: currFill, opacity: 1, width: 2, linecap: 'round', linejoin: 'round' })
+	}
+	if(currObject=='circle'){
+		var ellipse = draw.ellipse(60, 60).fill({color: currFill, opacity: .6}).stroke({color: currFill, width: 2, opacity: 1 }).move(xinitial,yinitial);
+		console.log('ellipse');
+	}
+	if(currObject=='line'){
+		lastPointX=xinitial;
+		lastPointY=yinitial;
+		var line = draw.line([[lastPointX, lastPointY], [lastPointX-1, lastPointY-1]])
+		//line.move(xinitial,yinitial)
+		line.stroke({ color: currFill, width: 7, linecap: 'round', linejoin: 'round' })
+	}
+	
+   element.on("touchmove", function(){
+	if(currObject=='square'){
+		rect.size(10+event.pageX-xinitial, 10+event.touches[0].clientY-yinitial)
+		console.log(flag++);
+	}
+	if(currObject=='star'){
+		var originNew,p1new,p2new,p3new,p4new,p5new,p6new,p7new,p8new,p9new,p10new,p11new;
+
+		originNew = [event.touches[0].clientX,event.touches[0].clientY];
+		xinitialNew = originNew[0];
+		yinitialNew = originNew[1];
+		var xOffset = xinitialNew-xinitial;
+		var yOffset = yinitialNew - yinitial;
+		var x = Math.pow(xinitialNew-xinitial,2);
+		var y = Math.pow(yinitialNew-yinitial,2);
+		console.log(x+','+y);
+		var addiplier = Math.sqrt(x+y);
+		addiplier = addiplier/2 || 0;
+		
+		innerBase = (90+addiplier)*Math.cos(1.256637);
+		innerHeight = (innerBase/2)*Math.sin(0.314159);
+		var innerMult = (45+addiplier)/2;
+		
+		console.log(addiplier);
+		xOffset = xOffset/2;
+		yOffset = yOffset/2;
+		p1new= [xinitialNew-xOffset,yinitialNew-yOffset-(45+addiplier)*Math.sin(1.5708)];
+		p2new= [xinitialNew-xOffset+(innerMult*Math.cos(-0.942478)),yinitialNew-yOffset+(innerMult*Math.sin(-0.942478))];
+		p3new= [xinitialNew-xOffset+((45+addiplier)*Math.cos(0.314159)),yinitialNew-yOffset+((45+addiplier)*Math.sin(-0.314159))];
+		p4new= [xinitialNew-xOffset+(innerMult*Math.cos(0.314159)),yinitialNew-yOffset+(innerMult*Math.sin(0.314159))];
+		p5new= [xinitialNew-xOffset+((45+addiplier)*Math.cos(0.942478)),yinitialNew-yOffset+((45+addiplier)*Math.sin(0.942478))];
+		p6new= [xinitialNew-xOffset+(innerMult*Math.cos(1.5708)),yinitialNew-yOffset+(innerMult*Math.sin(1.5708))];
+		p7new= [xinitialNew-xOffset+((45+addiplier)*Math.cos(2.19911)),yinitialNew-yOffset+((45+addiplier)*Math.sin(2.19911))];
+		p8new= [xinitialNew-xOffset+(innerMult*Math.cos(2.82743)),yinitialNew-yOffset+(innerMult*Math.sin(2.82743))];
+		p9new= [xinitialNew-xOffset+((45+addiplier)*Math.cos(3.45575)),yinitialNew-yOffset+((45+addiplier)*Math.sin(3.45575))];
+		p10new=[xinitialNew-xOffset+(innerMult*Math.cos(4.08407)),yinitialNew-yOffset+(innerMult*Math.sin(4.08407))];
+		p11new= p1new;//[50+xinitial,0+yinitial];
+		polyline.plot([p1new,p2new,p3new,p4new,p5new,p6new,p7new,p8new,p9new,p10new,p11new])
+		
+	}
+	if(currObject=='circle'){
+		ellipse.radius(30+Math.abs((event.touches[0].clientX-xinitial)/2), 30+Math.abs((event.touches[0].clientY-yinitial)/2))
+		console.log(flag++);
+	}
+	
+	if(currObject=='line'){
+		var newLine = draw.line([[event.touches[0].clientX, event.touches[0].clientY], [lastPointX, lastPointY]])
+		newLine.stroke({ color: currFill, width: 17, linecap: 'round', linejoin: 'round' })
+		//line.plot
+		lastPointX=event.touches[0].clientX;
+		lastPointY=event.touches[0].clientY;
+	}
+	
+	}, false);
+
+}, false);
+
+element.on("touchend", function(){
+    element.off("touchmove");
+        //alert("click");
+}, false);
+
+//Button Funtions
+	function changeColor(element,c){
+		if(c==1){ 
+			currFill = 'blue';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+			
+			var list = document.getElementsByTagName("svg")[0];
+			//console.log(list);
+			var lastChild = list.lastChild;
+			//console.log(lastChild);
+			
+			//Change last shapes color to new color
+			lastChild.setAttribute("stroke", currFill);
+			lastChild.setAttribute("fill", currFill);
+			}//var x = SVG.lastChild.fillColor(currFill);} Change fill color
+		if(c==2){ 
+			currFill = '#ffc700';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+			
+			var list = document.getElementsByTagName("svg")[0];
+			//console.log(list);
+			var lastChild = list.lastChild;
+			//console.log(lastChild);
+			
+			//Change last shapes color to new color
+			lastChild.setAttribute("stroke", currFill);
+			lastChild.setAttribute("fill", currFill);
+			
+			}
+		if(c==3){ 
+			currFill = '#00c44b';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+			var list = document.getElementsByTagName("svg")[0];
+			//console.log(list);
+			var lastChild = list.lastChild;
+			//console.log(lastChild);
+			
+			//Change last shapes color to new color
+			lastChild.setAttribute("stroke", currFill);
+			lastChild.setAttribute("fill", currFill);
+			}
+		if(c==4){ 
+			currFill = 'red';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+			var list = document.getElementsByTagName("svg")[0];
+			//console.log(list);
+			var lastChild = list.lastChild;
+			//console.log(lastChild);
+			
+			//Change last shapes color to new color
+			lastChild.setAttribute("stroke", currFill);
+			lastChild.setAttribute("fill", currFill);
+			}
+		if(c==5){ 
+			currFill = 'purple';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+			var list = document.getElementsByTagName("svg")[0];
+			//console.log(list);
+			var lastChild = list.lastChild;
+			//console.log(lastChild);
+			
+			//Change last shapes color to new color
+			lastChild.setAttribute("stroke", currFill);
+			lastChild.setAttribute("fill", currFill);
+			}
+	}
+	
+	function changeShape(element,c){
+		if(c==1){ 
+			currObject = 'square';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+		}
+		if(c==2){ 
+			currObject = 'star';
+			
+			//var result = [],
+			node = element;//.parentNode.firstChild;
+			
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+		}
+		if(c==3){ 
+			currObject = 'circle';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+		}
+		if(c==4){ 
+			currObject = 'line';
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.nextElementSibling || node.nextSibling;
+				console.log(node);
+			}
+			node = element;
+			while( node && node.nodeType === Node.ELEMENT_NODE && node !== this ) {
+				//result.push( node );
+				node.classList.remove("active");
+				node = node.previousElementSibling || node.previousSibling;
+				console.log(node);
+			}
+			element.classList.add("active");
+		}
+	}
+	
+	//Button CLEAR
+	function clearReload(){
+		draw.clear();
+		//console.log("clear");
+	}
+	
+</script>
 </body>
 
 </html>
