@@ -83,9 +83,7 @@
     <Content Exclude="images\*SplashScreenPhone*;images\*.scale-240.*" Include="images\*.jpg" />
     <Content Exclude="images\*SplashScreenPhone*;images\*.scale-240.*" Include="images\*.jpeg" />
   </ItemGroup>
-  <ItemGroup>
-    <SDKReference Include="Microsoft.WinJS.2.0, Version=1.0" />
-  </ItemGroup>
+
   <Import Project="CordovaApp.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below then uncomment

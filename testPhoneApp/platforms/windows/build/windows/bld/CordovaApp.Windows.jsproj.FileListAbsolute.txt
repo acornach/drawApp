@@ -1,0 +1,3 @@
+C:\Users\Mike\Desktop\DrawApp\testPhoneApp\platforms\windows\build\windows\debug\anycpu\win8.1\GlobalizationProxy.winmd
+C:\Users\Mike\Desktop\DrawApp\testPhoneApp\platforms\windows\build\windows\bld\CordovaApp.Windows.jsprojResolveAssemblyReference.cache
+C:\Users\Mike\Desktop\DrawApp\testPhoneApp\platforms\windows\build\windows\bld\CordovaApp.Windows.jsproj.CoreCompileInputs.cache

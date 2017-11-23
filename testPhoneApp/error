@@ -1,56 +1,11 @@
-[36m[phonegap][39m executing 'cordova run android ' ...
-ANDROID_HOME=C:\adt-bundle\adt-bundle-windows-x86_64-20140702\sdk
+[36m[phonegap][39m executing 'cordova build windows ' ...
+Building project: c:\Users\Mike\Desktop\DrawApp\testPhoneApp\platforms\windows\CordovaApp.Windows.jsproj
 
-JAVA_HOME=C:\Program Files\Java\jdk1.8.0_144
+	Configuration : debug
+	Platform      : anycpu
 
-Subproject Path: CordovaLib
+c:\Users\Mike\Desktop\DrawApp\testPhoneApp\platforms\windows\CordovaApp.Windows.jsproj(70,11): error MSB4226: The imported project "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\Microsoft\VisualStudio\v15.0\JavaScript\Microsoft.VisualStudio.WJProject.Default.props" was not found. Also, tried to find "Microsoft\VisualStudio\v15.0\JavaScript\Microsoft.VisualStudio.WJProject.Default.props" in the fallback search path(s) for $(MSBuildExtensionsPath32) - "C:\Program Files (x86)\MSBuild" . These search paths are defined in "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\msbuild.exe.Config". Confirm that the path in the <Import> declaration is correct, and that the file exists on disk in one of the search paths.
 
-The Task.leftShift(Closure) method has been deprecated and is scheduled to be removed in Gradle 5.0. Please use Task.doLast(Action) instead.
-	at build_6rnbm99np4876e2eb6ho4mt50.run(C:\Users\Mike\Desktop\DrawApp\testPhoneApp\platforms\android\build.gradle:137)
-
-Observed package id 'add-ons;addon-google_apis-google-19' in inconsistent location 'C:\adt-bundle\adt-bundle-windows-x86_64-20140702\sdk\add-ons\addon-google_apis-google-19-1' (Expected 'C:\adt-bundle\adt-bundle-windows-x86_64-20140702\sdk\add-ons\addon-google_apis-google-19')
-
-
-Observed package id 'build-tools;20.0.0' in inconsistent location 'C:\adt-bundle\adt-bundle-windows-x86_64-20140702\sdk\build-tools\android-4.4W' (Expected 'C:\adt-bundle\adt-bundle-windows-x86_64-20140702\sdk\build-tools\20.0.0')
-
-
-Checking the license for package Android SDK Platform 25 in C:\adt-bundle\adt-bundle-windows-x86_64-20140702\sdk\licenses
-
-Warning: License for package Android SDK Platform 25 not accepted.
-
-
-FAILURE: Build failed with an exception.
-
-
-
-* What went wrong:
-A problem occurred configuring root project 'android'.
-
-> You have not accepted the license agreements of the following SDK components:
-[Android SDK Platform 25].
-Before building your project, you need to accept the license agreements and complete the installation of the missing components using the Android Studio SDK Manager.
-Alternatively, to learn how to transfer the license agreements from one workstation to another, go to http://d.android.com/r/studio-ui/export-licenses.html
-
-* Try:
-Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
-
-
-BUILD FAILED
-
-
-Total time: 1.155 secs
-
-Error: cmd: Command failed with exit code 1 Error output:
-FAILURE: Build failed with an exception.
-
-* What went wrong:
-A problem occurred configuring root project 'android'.
-> You have not accepted the license agreements of the following SDK components:
-[Android SDK Platform 25].
-Before building your project, you need to accept the license agreements and complete the installation of the missing components using the Android Studio SDK Manager.
-Alternatively, to learn how to transfer the license agreements from one workstation to another, go to http://d.android.com/r/studio-ui/export-licenses.html
-
-* Try:
-Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+Error: C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\msbuild.exe: Command failed with exit code 1
 
 
